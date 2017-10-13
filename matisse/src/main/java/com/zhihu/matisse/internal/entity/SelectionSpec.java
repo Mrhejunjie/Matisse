@@ -17,8 +17,10 @@
 package com.zhihu.matisse.internal.entity;
 
 import android.content.pm.ActivityInfo;
+import android.net.Uri;
 import android.support.annotation.StyleRes;
 
+import com.yalantis.ucrop.UCrop;
 import com.zhihu.matisse.MimeType;
 import com.zhihu.matisse.R;
 import com.zhihu.matisse.engine.ImageEngine;
@@ -45,6 +47,9 @@ public final class SelectionSpec {
     public int gridExpectedSize;
     public float thumbnailScale;
     public ImageEngine imageEngine;
+    public boolean isGotoCrop;
+    public UCrop.Options cropOptions;
+    public Uri cropUri;
 
     private SelectionSpec() {
     }
@@ -74,6 +79,9 @@ public final class SelectionSpec {
         gridExpectedSize = 0;
         thumbnailScale = 0.5f;
         imageEngine = new GlideEngine();
+        isGotoCrop = false;
+        cropOptions = null;
+        cropUri = null;
     }
 
     public boolean singleSelectionModeEnabled() {

@@ -18,6 +18,7 @@ package com.zhihu.matisse;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.support.annotation.IntDef;
 import android.support.annotation.NonNull;
@@ -25,6 +26,7 @@ import android.support.annotation.RequiresApi;
 import android.support.annotation.StyleRes;
 import android.support.v4.app.Fragment;
 
+import com.yalantis.ucrop.UCrop;
 import com.zhihu.matisse.engine.ImageEngine;
 import com.zhihu.matisse.filter.Filter;
 import com.zhihu.matisse.internal.entity.CaptureStrategy;
@@ -281,6 +283,33 @@ public final class SelectionCreator {
         } else {
             activity.startActivityForResult(intent, requestCode);
         }
+    }
+    /**
+     * Start to select media and wait for result.
+     *
+     * @param isGotoCrop Sign of whether to go to the crop Activity.
+     */
+    public SelectionCreator crop(boolean isGotoCrop) {
+        mSelectionSpec.isGotoCrop = isGotoCrop;
+        return this;
+    }
+    /**
+     * set the options of UCrop.
+     *
+     * @param options Sign of whether to go to the crop Activity.
+     */
+    public SelectionCreator cropOptions(UCrop.Options options) {
+        mSelectionSpec.cropOptions = options;
+        return this;
+    }
+    /**
+     * set the crop uri.
+     *
+     * @param cropUri Uri of the path to save the croped picture.
+     */
+    public SelectionCreator cropUri(Uri cropUri) {
+        mSelectionSpec.cropUri = cropUri;
+        return this;
     }
 
 }

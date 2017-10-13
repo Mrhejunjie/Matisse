@@ -20,6 +20,8 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -30,6 +32,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.tbruyelle.rxpermissions2.RxPermissions;
+import com.yalantis.ucrop.UCrop;
+import com.yalantis.ucrop.UCropActivity;
 import com.zhihu.matisse.Matisse;
 import com.zhihu.matisse.MimeType;
 import com.zhihu.matisse.engine.impl.GlideEngine;
@@ -37,6 +41,7 @@ import com.zhihu.matisse.engine.impl.PicassoEngine;
 import com.zhihu.matisse.filter.Filter;
 import com.zhihu.matisse.internal.entity.CaptureStrategy;
 
+import java.io.File;
 import java.util.List;
 
 import io.reactivex.Observer;
@@ -75,13 +80,23 @@ public class SampleActivity extends AppCompatActivity implements View.OnClickLis
                         if (aBoolean) {
                             switch (v.getId()) {
                                 case R.id.zhihu:
+                                    File tempFile = new File(Environment.getExternalStorageDirectory(),
+                                            "test.jpg");
+                                    Uri uri = Uri.fromFile(tempFile);
+                                    UCrop.Options options = new UCrop.Options();
+                                    options.setCircleDimmedLayer(true);
+                                    options.setAllowedGestures(UCropActivity.SCALE,UCropActivity.SCALE,UCropActivity.SCALE);
+                                    options.setToolbarColor(ContextCompat.getColor(SampleActivity.this, R.color.zhihu_primary));
+                                    options.setStatusBarColor(ContextCompat.getColor(SampleActivity.this, R.color.zhihu_primary_dark));
                                     Matisse.from(SampleActivity.this)
                                             .choose(MimeType.ofAll(), false)
                                             .countable(true)
                                             .capture(true)
+                                            .crop(true)
+                                            .cropOptions(options)
+                                            .cropUri(uri)
                                             .captureStrategy(
                                                     new CaptureStrategy(true, "com.zhihu.matisse.sample.fileprovider"))
-                                            .maxSelectable(9)
                                             .addFilter(new GifSizeFilter(320, 320, 5 * Filter.K * Filter.K))
                                             .gridExpectedSize(
                                                     getResources().getDimensionPixelSize(R.dimen.grid_expected_size))

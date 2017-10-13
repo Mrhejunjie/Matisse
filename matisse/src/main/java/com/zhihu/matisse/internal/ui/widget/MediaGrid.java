@@ -22,6 +22,7 @@ import android.text.format.DateUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -55,6 +56,11 @@ public class MediaGrid extends SquareFrameLayout implements View.OnClickListener
 
         mThumbnail = (ImageView) findViewById(R.id.media_thumbnail);
         mCheckView = (CheckView) findViewById(R.id.check_view);
+        if (SelectionSpec.getInstance().isGotoCrop){
+            mCheckView.setVisibility(GONE);
+        }else {
+            mCheckView.setVisibility(VISIBLE);
+        }
         mGifTag = (ImageView) findViewById(R.id.gif);
         mVideoDuration = (TextView) findViewById(R.id.video_duration);
 

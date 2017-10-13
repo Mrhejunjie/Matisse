@@ -90,7 +90,6 @@ public class MediaSelectionFragment extends Fragment implements
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         Album album = getArguments().getParcelable(EXTRA_ALBUM);
-
         mAdapter = new AlbumMediaAdapter(getContext(),
                 mSelectionProvider.provideSelectedItemCollection(), mRecyclerView);
         mAdapter.registerCheckStateListener(this);
