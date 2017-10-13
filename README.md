@@ -1,8 +1,9 @@
-#本项目fork自[Matisse](https://github.com/zhihu/Matisse)，集成[uCrop](https://github.com/Yalantis/uCrop)裁剪功能，主要就是做了点功能组合，就不上传远程库了。大家可以在Release里下载arr包。 
+#本项目fork自[Matisse](https://github.com/zhihu/Matisse)，集成[uCrop](https://github.com/Yalantis/uCrop)裁剪功能，主要就是做了点功能组合，就不上传远程库了。大家可以在[这里](https://github.com/Zweihui/Matisse/blob/master/arr/matisse-release.aar)下载arr包。 
 
 [Matisse](https://github.com/zhihu/Matisse)在这里查看Matisse图片选择器相关文档
 
 [uCrop](https://github.com/Yalantis/uCrop)在这里查看uCrop图片裁剪相关文档
+
 
 ##效果图
 
