@@ -8,6 +8,8 @@
 
 ![](image/normal.gif)
 
+##用法
+
 ```java
               File tempFile = new File(Environment.getExternalStorageDirectory(), "test.jpg"); //设置截图后的保存路径
               Uri uri = Uri.fromFile(tempFile);
@@ -31,7 +33,7 @@
                      .forResult(REQUEST_CODE_CHOOSE);
 ```
 
-数据返回和接收和[Matisse](https://github.com/zhihu/Matisse)一样
+##数据返回和接收和[Matisse](https://github.com/zhihu/Matisse)一样
 
 ```java
 List<Uri> mSelected;
