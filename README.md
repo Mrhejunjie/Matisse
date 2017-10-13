@@ -6,7 +6,7 @@
 
 ##效果图
 
-[](image/normal.gif)
+![](image/normal.gif)
 
 ```java
               File tempFile = new File(Environment.getExternalStorageDirectory(), "test.jpg"); //设置截图后的保存路径
