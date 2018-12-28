@@ -22,11 +22,7 @@ android {
     defaultConfig {
         applicationId 'com.zhihu.matisse.sample'
         minSdkVersion 14
-<<<<<<< HEAD
-        targetSdkVersion 25
-=======
         targetSdkVersion 27
->>>>>>> upstream/master
         versionCode 1
         versionName "1.0"
     }

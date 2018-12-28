@@ -44,7 +44,7 @@ dependencies {
     implementation "com.android.support:support-annotations:${supportLibVersion}"
     implementation "com.android.support:recyclerview-v7:${supportLibVersion}"
     implementation 'it.sephiroth.android.library.imagezoom:library:1.0.4'
-    implementation 'com.github.yalantis:ucrop:2.2.1'
+    api 'com.github.yalantis:ucrop:2.2.2'
 
     compileOnly 'com.github.bumptech.glide:glide:3.7.0'
     compileOnly 'com.squareup.picasso:picasso:2.5.2'
@@ -53,12 +53,12 @@ dependencies {
 // jcenter configuration for novoda's bintray-release
 // $ ./gradlew clean build bintrayUpload -PbintrayUser=BINTRAY_USERNAME -PbintrayKey=BINTRAY_KEY -PdryRun=false
 publish {
-    userOrg = 'zhihu'
-    groupId = 'com.zhihu.android'
+    userOrg = 'zhangweihui0503'
+    groupId = 'com.zwh'
     artifactId = 'matisse'
-    publishVersion = '0.5.2-beta4'
-    desc = 'A well-designed local image selector for Android'
-    website = 'https://www.zhihu.com/'
+    publishVersion = '0.1.0'
+    desc = 'A local image selector and crop for Android'
+    website = 'https://github.com/Zweihui/Matisse'
 }
 
 task javadoc(type: Javadoc) {

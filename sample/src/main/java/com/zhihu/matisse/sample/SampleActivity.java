@@ -21,8 +21,8 @@ import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.v4.content.ContextCompat;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -38,7 +38,6 @@ import com.yalantis.ucrop.UCrop;
 import com.yalantis.ucrop.UCropActivity;
 import com.zhihu.matisse.Matisse;
 import com.zhihu.matisse.MimeType;
-import com.zhihu.matisse.engine.impl.GlideEngine;
 import com.zhihu.matisse.engine.impl.PicassoEngine;
 import com.zhihu.matisse.filter.Filter;
 import com.zhihu.matisse.internal.entity.CaptureStrategy;
@@ -88,12 +87,17 @@ public class SampleActivity extends AppCompatActivity implements View.OnClickLis
                                             "test.jpg");
                                     Uri uri = Uri.fromFile(tempFile);
                                     UCrop.Options options = new UCrop.Options();
-                                    options.setCircleDimmedLayer(true);
+                                    options.setCircleDimmedLayer(true);//设置是否为圆形裁剪框
+                                    options.setShowCropGrid(false);  //设置是否显示裁剪网格
+                                    options.setShowCropFrame(false); //设置是否显示裁剪边框(true为方形边框)
                                     options.setAllowedGestures(UCropActivity.SCALE,UCropActivity.SCALE,UCropActivity.SCALE);
                                     options.setToolbarColor(ContextCompat.getColor(SampleActivity.this, R.color.zhihu_primary));
                                     options.setStatusBarColor(ContextCompat.getColor(SampleActivity.this, R.color.zhihu_primary_dark));
+                                    options.setHideBottomControls(true); //隐藏底部操作栏
+                                    options.setFreeStyleCropEnabled(true);//自定义调节裁剪框大小
                                     Matisse.from(SampleActivity.this)
                                             .choose(MimeType.ofAll(), false)
+                                            .theme(R.style.Matisse_Zhihu)
                                             .countable(true)
                                             .capture(true)
                                             .crop(true)
@@ -107,14 +111,11 @@ public class SampleActivity extends AppCompatActivity implements View.OnClickLis
                                                     getResources().getDimensionPixelSize(R.dimen.grid_expected_size))
                                             .restrictOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
                                             .thumbnailScale(0.85f)
-                                            .imageEngine(new GlideEngine())  // for glide-V3
-//                                            .imageEngine(new Glide4Engine())    // for glide-V4
+//                                            .imageEngine(new GlideEngine())  // for glide-V3
+                                            .imageEngine(new Glide4Engine())    // for glide-V4
                                             .setOnSelectedListener(new OnSelectedListener() {
                                                 @Override
-                                                public void onSelected(
-                                                        @NonNull List<Uri> uriList, @NonNull List<String> pathList) {
-                                                    // DO SOMETHING IMMEDIATELY HERE
-                                                    Log.e("onSelected", "onSelected: pathList=" + pathList);
+                                                public void onSelected(@NonNull List<Uri> uriList, @NonNull List<String> pathList) {
 
                                                 }
                                             })
@@ -124,8 +125,6 @@ public class SampleActivity extends AppCompatActivity implements View.OnClickLis
                                             .setOnCheckedListener(new OnCheckedListener() {
                                                 @Override
                                                 public void onCheck(boolean isChecked) {
-                                                    // DO SOMETHING IMMEDIATELY HERE
-                                                    Log.e("isChecked", "onCheck: isChecked=" + isChecked);
                                                 }
                                             })
                                             .forResult(REQUEST_CODE_CHOOSE);

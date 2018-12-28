@@ -15,9 +15,7 @@
  */
 package com.zhihu.matisse.ui;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
-import android.content.ContentUris;
 import android.content.Intent;
 import android.content.res.TypedArray;
 import android.database.Cursor;
@@ -26,11 +24,8 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
-import android.provider.DocumentsContract;
-import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
@@ -62,12 +57,10 @@ import com.zhihu.matisse.internal.utils.MediaStoreCompat;
 import com.zhihu.matisse.internal.utils.PathUtils;
 import com.zhihu.matisse.internal.utils.PhotoMetadataUtils;
 
-import java.io.File;
 import java.util.ArrayList;
 
 import static android.R.attr.maxHeight;
 import static android.R.attr.maxWidth;
-import static java.security.AccessController.getContext;
 
 /**
  * Main Activity to display albums and media content (images/videos) in each album
@@ -464,6 +457,15 @@ public class MatisseActivity extends AppCompatActivity implements
         if (mMediaStoreCompat != null) {
             mMediaStoreCompat.dispatchCaptureIntent(this, REQUEST_CODE_CAPTURE);
         }
+    }
+
+    private void gotoUrop(Uri fromUri){
+        if (mSpec.cropUri == null)
+            throw new RuntimeException("Don't forget to set cropUri.");
+        UCrop.of(fromUri, mSpec.cropUri)
+                .withOptions(mSpec.cropOptions)
+                .withMaxResultSize(maxWidth, maxHeight)
+                .start(this);
     }
 
 }
