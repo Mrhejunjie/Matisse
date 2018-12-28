@@ -5,7 +5,7 @@
 [uCrop](https://github.com/Yalantis/uCrop)在这里查看uCrop图片裁剪相关文档
 在Module中build.gradle中配置 :
 
-[ ![Download](https://api.bintray.com/packages/zhangweihui0503/maven/RxFingerPrinter/images/download.svg?version=1.2.0) ](https://bintray.com/zhangweihui0503/maven/RxFingerPrinter/1.2.0/link)
+[ ![Download](https://api.bintray.com/packages/zhangweihui0503/maven/RxFingerPrinter/images/download.svg?version=0.1.0) ](https://bintray.com/zhangweihui0503/maven/RxFingerPrinter/0.1.0/link)
 ```gradle
 dependencies {
     compile  'com.zwh:matisse:0.1.0'
