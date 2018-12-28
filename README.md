@@ -1,9 +1,16 @@
-#本项目fork自[Matisse](https://github.com/zhihu/Matisse)，集成[uCrop](https://github.com/Yalantis/uCrop)裁剪功能，主要就是做了点功能组合，就不上传远程库了。大家可以在[这里](https://github.com/Zweihui/Matisse/blob/master/arr/matisse-release.aar)下载arr包。 
+#本项目fork自[Matisse](https://github.com/zhihu/Matisse)，集成[uCrop](https://github.com/Yalantis/uCrop)裁剪功能，主要就是做了点功能组合。
 
 [Matisse](https://github.com/zhihu/Matisse)在这里查看Matisse图片选择器相关文档
 
 [uCrop](https://github.com/Yalantis/uCrop)在这里查看uCrop图片裁剪相关文档
+在Module中build.gradle中配置 :
 
+[ ![Download](https://api.bintray.com/packages/zhangweihui0503/maven/RxFingerPrinter/images/download.svg?version=1.2.0) ](https://bintray.com/zhangweihui0503/maven/RxFingerPrinter/1.2.0/link)
+```gradle
+dependencies {
+    compile  'com.zwh:matisse:0.1.0'
+}
+```
 
 ##效果图
 
